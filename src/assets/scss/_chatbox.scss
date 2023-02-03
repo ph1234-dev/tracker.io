@@ -1,0 +1,258 @@
+@use "variable";
+@use "sass:math";
+
+.chatbox{
+    width: 100%;
+    height: 100%;
+    // padding: variable.$padding;
+    display: grid;
+    grid-template-areas: 
+        "chatbot-header" 
+        "chatbot-message-container" 
+        "chatbot-actionbar"
+        "chatbot-menubar";
+    grid-template-rows: auto 1fr auto;
+    z-index: 1;
+    position:fixed;
+    top: 0;
+    left: 0;
+
+    $font-size: .9rem;
+    
+    >*{
+        padding: variable.$padding;
+        font-size: $font-size;
+    }
+
+    .chatbox-nav{
+        display:grid;
+        gap: variable.$gap-horizontal;
+        grid-area: chatbot-header;
+        align-items: center;
+        background-color: variable.$bg-whiter;
+        // box-shadow:  0 0 3px #40404090;  
+        z-index: 1;
+        grid-template-areas: "title actions";
+        grid-template-columns: 1fr auto;
+
+        .chatbox-nav-status,
+        .chatbox-nav-time{
+            display: none;
+        }
+        .chatbox-nav-title{
+            font-weight: 500;
+            flex-grow: 1;
+            grid-area: title;
+        }
+        
+        .chatbox-nav-actions{
+            grid-area: actions;
+            display: flex;
+            gap: variable.$gap-horizontal;
+            
+            *:first-child{
+                margin-left: auto;
+            }
+
+            *{
+                margin: 0;
+            }
+
+        }
+    }
+
+    .chatbox-message-container{
+        display: flex;
+        flex-direction: column;
+        grid-area: chatbot-message-container;
+        gap: variable.$padding-top * 2;
+        background-color: variable.$bg-whitest;
+        overflow-y: auto;
+        box-sizing: border-box;
+    
+        >*:first-child{
+            margin-top: auto;
+        }
+
+        >*:last-child{
+            margin-bottom: variable.$margin-top;
+        }
+
+        $size: 12px;
+
+        .chatbox-message-chatbot{
+            padding: variable.$padding;
+            background-color: variable.$bg-white;
+            border-radius: variable.$border-radius;
+            word-wrap: break-word;
+            max-width: 90%;
+            margin-left: right;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .chatbox-message-user{
+            padding: variable.$padding;
+            background-color: variable.$bg-primary;
+            border-radius: variable.$border-radius;
+            word-wrap: break-word;
+            max-width: 90%;
+            margin-left: auto;
+            color: rgba(255, 255, 255, 0.753);
+            font-weight: 500;
+            position: relative;
+            
+        }
+    }
+
+    .chatbox-actionbar{
+        display: flex;
+        gap: variable.$padding-left;
+        grid-area: chatbot-actionbar;
+        background-color: variable.$bg-whiter;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        gap: 0;
+        // box-sizing: border-box;
+
+        input[type="text"]{
+            &.chatbox-action-text-input{
+                padding: variable.$padding;
+                @include variable.draw-border;
+                background-color: variable.$bg-whitest;
+                // background-color: green;
+                border: none;
+                width: 100%;
+                max-width: 100%;
+                order: 1;
+                flex-grow: 1;
+                border-radius: variable.$border-radius 0 0 variable.$border-radius !important;
+            }
+
+            outline: none !important;
+        }
+
+        .chatbox-action-send{
+            border: none;
+            // padding: p;
+            padding: variable.$padding-top;
+            // padding: 0;
+            height: 100%;
+            order: 2;
+            border-radius:  0 variable.$border-radius variable.$border-radius 0;
+            background-color: variable.$bg-whitest;
+            >*{
+                color: variable.$bg-primary;
+            }
+        }
+    }
+
+    .chatbox-menubar{
+        grid-area: chatbot-menubar;
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: 425px) {
+
+    $chatbot-container-radius: 5px;    
+    // $chatbot-border-color: rgb(58, 63, 75);
+    $chatbot-border-color: white;
+    $chatbot-width: 320px;
+    $chatbot-width: 500px;
+    $chatbox-border-width: 7px;
+    
+
+
+    .chatbox{
+        max-width:  $chatbot-width !important;
+        position: relative;
+        width: $chatbot-width;
+        box-sizing: content-box;
+        height: 525px;
+        padding: $chatbox-border-width;
+        border-radius: $chatbot-container-radius;
+        background-color: $chatbot-border-color;
+        box-shadow: 0px 2px 7px rgb(217, 217, 235);
+        z-index: auto;
+
+        .chatbox-nav{
+            display: -ms-inline-grid;
+            display: -ms-inline-grid;
+            display: inline-grid;
+            grid-template-areas: "time status" "title actions";
+            grid-template-columns: 1fr 1fr;
+            row-gap: variable.$gap-vertical;
+            border-radius:  $chatbot-container-radius  $chatbot-container-radius 0 0;
+            position: relative;
+            padding-top: 2px;
+
+                
+            .chatbox-nav-time{
+                grid-area: time;
+                display: flex;
+                font-size: small;
+                position: absolute;
+                top: 0;
+                font-weight: 600;
+                // padding-left: variable.$padding-left;
+            }
+
+            .chatbox-nav-status{
+                position:relative;
+                top: 0;
+                font-weight: 600;
+                grid-area: status;
+                display: block;
+                // background-color: indianred;
+                text-align: right;
+                font-size: small;
+                right: 0;
+                // padding-right:variable.$padding-left;
+                
+            }
+
+            .chatbox-nav-title{
+                // padding-left: variable.$padding-left;
+            }
+
+
+            .chatbox-nav-actions{
+                // background-color: gold;
+            }
+        }
+        
+        .chatbox-nav-toggler{
+            display: none;
+        }
+
+        // invalidate the position bottom
+        .chatbox-actionbar{
+            max-width: inherit;
+            position: relative;
+            bottom: auto;
+            padding-bottom: variable.$padding-top * 2;
+            border-radius: 0 0 $chatbot-container-radius $chatbot-container-radius;
+           
+            input[type="text"]{
+                &.chatbox-action-text-input{
+                    padding: variable.$padding;
+                    @include variable.draw-border;
+                    background-color: variable.$bg-whitest;
+                    width: 100% !important;
+                    order: 1;
+                    flex-shrink: 1;
+                    border: none;
+                }
+
+            }
+
+
+        }
+        
+    }
+
+
+}

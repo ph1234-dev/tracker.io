@@ -1,0 +1,142 @@
+@use "variable";
+
+$padding-small-screen: variable.$padding-top*2 variable.$padding-left ;
+$padding-large-screen:  variable.$padding-top*3.14 variable.$padding-left ;
+
+.container-form {
+    padding: 0;
+    box-shadow: none;
+
+    .form,
+    form {
+        order: 2;
+        flex-grow: 1;
+        // width: 100%;
+        border: none;
+    }
+
+    .container-form-info {
+        display: none;
+    }
+}
+
+.form,
+form {
+    grid-area: form;
+    display: flex;
+    flex-direction: column;
+    padding: $padding-small-screen;
+    align-items: center;
+
+    * {
+        margin-top: variable.$gap-vertical;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    width: 100%;
+    // background-color: variable.$bg-whitest;
+    background-color: variable.$bg-whitest;
+    @include draw-border;
+
+    .title {
+        // color: $bg-primary;
+        font-weight: bold;
+    }
+
+    button,
+    textarea,
+    input {
+        width: 100%;
+        border-radius: variable.$border-radius;
+        padding: variable.$padding;
+        @include variable.draw-border;
+        background-color: variable.$bg-white;
+
+        &[type="submit"] {
+            margin-top: variable.$margin-top*2.14 !important;
+            display: flex;
+            justify-content: center;
+            gap: variable.$padding-left;
+            @include variable.paint-primary;
+        }
+
+    }
+
+    label {
+        font-weight: 500;
+
+        +textarea,
+        +input {
+            margin-top: 0;
+        }
+    }
+
+    .error {
+        color: variable.$bg-warning;
+        margin-bottom: variable.$margin-top;
+        font-size: smaller;
+    }
+
+}
+
+@media only screen and (min-width: 321px) {
+
+    .form,
+    form {
+        max-width: 325px;
+        align-items: unset;
+        padding: $padding-large-screen;
+    }
+}
+
+@media screen and (min-width: 425px) {
+
+    .container-form {
+
+        display: flex;
+        box-shadow: 0 0 5px #c1c1c190;
+        width: 100%;
+        border-radius: variable.$border-radius;
+        margin: auto;
+
+        .container-form-info {
+            display: flex;
+            flex-direction: column;
+            order: 1;
+            flex-grow: 1;
+            gap: variable.$gap-vertical;
+            border-radius: variable.$border-radius 0 0 variable.$border-radius !important;
+            padding: variable.$padding-top*4 variable.$padding-left * 2;
+            background-color: $bg-white;
+            // @include variable.paint-primary;
+
+            .form-svg {
+                margin: auto;
+                min-width: 100px;
+                box-sizing: content-box;
+            }
+        }
+
+
+        .form,
+        form {
+            order: 2;
+            flex-grow: 1;
+            max-width: 425px;
+            border-radius: 0px variable.$border-radius variable.$border-radius 0 !important;
+            border: none;
+            padding: variable.$padding-top*4 variable.$padding-left * 2;
+
+            input[type="submit"] {
+                width: fit-content !important;
+                margin-left: auto !important;
+            }
+
+
+        }
+    }
+
+}

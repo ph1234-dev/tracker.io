@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?p3nhzb');
+  src:  url('fonts/icomoon.eot?p3nhzb#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?p3nhzb') format('truetype'),
+    url('fonts/icomoon.woff?p3nhzb') format('woff'),
+    url('fonts/icomoon.svg?p3nhzb#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-hawk:before {
+  content: "\e900";
+}
+.icon-phone:before {
+  content: "\e942";
+}
+.icon-bin:before {
+  content: "\e9ac";
+}
+.icon-arrow-up2:before {
+  content: "\ea3a";
+}
+.icon-arrow-right2:before {
+  content: "\ea3c";
+}
+.icon-arrow-down2:before {
+  content: "\ea3e";
+}
+.icon-arrow-left2:before {
+  content: "\ea40";
+}
+.icon-circle-up:before {
+  content: "\ea41";
+}
+.icon-circle-right:before {
+  content: "\ea42";
+}
+.icon-circle-down:before {
+  content: "\ea43";
+}
+.icon-circle-left:before {
+  content: "\ea44";
+}
+.icon-sort-alpha-asc:before {
+  content: "\ea48";
+}
+.icon-mail3:before {
+  content: "\ea85";
+}
+.icon-github:before {
+  content: "\eab0";
+}
+.icon-chrome:before {
+  content: "\ead9";
+}
+.icon-firefox:before {
+  content: "\eada";
+}
+.icon-git:before {
+  content: "\eae7";
+}

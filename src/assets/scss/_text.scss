@@ -1,0 +1,46 @@
+@use "variable";
+
+.text-color-primary{
+    background-color: variable.$bg-primary;    
+}
+
+
+.text-color-accent{
+    background-color: variable.$bg-accent;    
+}
+
+
+@mixin size{
+    &-small{
+        font-size: .75rem
+    }
+
+    &-big{
+        // font-size: 125%;
+        // font-size: calc(100% + 1vw);
+        
+        font-size: calc(1rem + .75vw);
+    }
+    
+    &-bigger{
+        // font-size: calc(145% + 1vw);
+        font-size: calc(1.15rem + 1.5vw);
+    }
+    
+    &-biggest{
+        // font-size: 5em;
+        font-size: calc(1.25rem + 2.5vw);
+    }
+}
+
+
+.text{
+    @include size;
+
+    &-bold{
+        font-weight: bold;
+        @include size;    
+    }
+}
+
+
