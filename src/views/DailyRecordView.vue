@@ -11,13 +11,18 @@ onMounted(async () => {
     let key = session.getRecordOfSelectedDate()
     if (key != undefined) {
         let record = await db.foodRecord.get({ date: key })
-        data.value = record.foodTaken
-        // session.setFoodTakenRecord(record.foodTaken)
-        console.log(`Food taken record : ${JSON.stringify(record)}`)
+        let foodTaken = record.foodTaken
+        data.value = foodTaken
+        totalFoodTaken.value = foodTaken.length
+        
+        foodTaken.forEach(item => {
+            totalCalories.value = totalCalories.value + item.calories
+        });
+
+
     } else {
         console.log('data gone after refresh')
     }
-
 
 })
 
@@ -34,31 +39,36 @@ let removeItem = async (index) => {
 
 }
 
+let totalCalories = ref(0)
+let totalFoodTaken = ref(0)
 </script>
 
 <template>
 
     <h1>Daily Record</h1>
-    <table>
+    <span class="actionbar text-small">
+        <span class="actionbar-info"><strong>Total Calories</strong>{{totalCalories}} cal</span>
+        <span class="actionbar-info"><strong>Items</strong> {{totalFoodTaken}} </span>
+        <router-link class="actionbar-action" :to="{name: 'store_food'}">
+            <i class="icon-plus"></i><strong>ADD MORE</strong> 
+        </router-link>
+    </span>
+    <table class="">
         <thead>
             <tr>
-                <!-- <th v-for="header in headers">
-                    <td>{{header }}</td>
-                </th> -->
                 <th width="30%">
-                <td>Food&nbsp;<span class="icon-sort-alpha-asc"></span></td>
+                    <td><strong>Portion</strong></td>
                 </th>
                 <th width="">
-                <td>Portion</td>
+                    <td>Portion</td>
                 </th>
                 <th>
-                <td>Calories</td>
+                    <td>Calories</td>
                 </th>
                 <th>
-                <td>Info</td>
+                    <td>Details</td>
                 </th>
                 <th width="5%">
-                <td></td>
                 </th>
             </tr>
         </thead>

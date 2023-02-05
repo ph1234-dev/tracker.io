@@ -71,12 +71,16 @@ form {
         +textarea,
         +input {
             margin-top: 0;
+
+            +.error{
+                margin-top: 0;
+            }
+
         }
     }
 
     .error {
         color: variable.$bg-warning;
-        margin-bottom: variable.$margin-top;
         font-size: smaller;
     }
 

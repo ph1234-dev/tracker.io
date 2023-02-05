@@ -1,15 +1,29 @@
+<script setup>
+import { useRouter } from 'vue-router';
+
+let router = useRouter()
+
+
+</script>
+
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <section class="panel panel-vertical">
+    <h1>Tracker.io</h1>
+        <p>
+            A free calorie tracker application where you can log your food consumption
+            and to help track your progress.
+        </p>
+      <router-link :to="{name: 'tracker'}" class="btn btn-primary">
+        Start
+      </router-link>
+    </section>
+
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+<style scoped>
+  p{
+    text-indent: 5ch  ;
+    max-width: 45ch;
+    /* text-align: center; */
   }
-}
 </style>

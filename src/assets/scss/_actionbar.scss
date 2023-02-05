@@ -5,6 +5,7 @@ $triangle-height: 1rem;
 $bg-default: variable.$bg-gray;
 
 .actionbar{
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: variable.$gap-vertical;

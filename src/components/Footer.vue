@@ -1,9 +1,9 @@
 <template>
     <span class="footer">
         <span class="footer-content">
-            <a>About</a>
-            <a>Privacy</a>
-            <a>Ahmadrasol A. Sam &#169; {{year}}</a>
+            <router-link :to="{name: 'about'}" >About</router-link>
+            <router-link :to="{name: 'privacy'}" >Privacy</router-link>
+            <router-link :to="{name: 'author'}" >Ahmadrasol A. Sam &#169; {{year}}</router-link>
         </span>
     </span>
 </template>

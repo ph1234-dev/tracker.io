@@ -5,6 +5,9 @@ import DailySummaryView from "@/views/DailySummaryView.vue"
 import DailyRecordView from "@/views/DailyRecordView.vue"
 import StoreView from "@/views/StoreView.vue"
 import NotFound from "@/views/NotFound.vue"
+import AboutView from "@/views/AboutView.vue"
+import PrivacyView from "@/views/PrivacyView.vue"
+import AuthorView from "@/views/AuthorView.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,7 +23,7 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/tracker/:date',
+      path: '/tracker',
       name: 'daily_summary',
       component: DailySummaryView,
     },
@@ -37,10 +40,17 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: AboutView
+    },
+    {
+      path: '/about',
+      name: 'privacy',
+      component: PrivacyView
+    },
+    {
+      path: '/author',
+      name: 'author',
+      component: AuthorView
     },
     {
       path: "/:catchAll(.*)",
