@@ -27,8 +27,8 @@ db.open().catch(function (e) {
 // alert(db.foodRecord.get(new Date().toLocaleDateString()))
 
 // let data = await db.foodRecord.get({date: new Date().toLocaleDateString()})
-let data = await db.foodRecord.get({date: 1})
-console.log(data)
+// let data = await db.foodRecord.get({date: 1})
+// console.log(data)
 
 // let newFoodTaken = data.foodTaken
 // console.log(newFoodTaken)

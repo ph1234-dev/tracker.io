@@ -33,7 +33,7 @@ let removeItem = async (index) => {
 
     let date = session.getRecordOfSelectedDate()
 
-    db.foodRecord.where('date').equals(date).modify((item, ref) => {
+    await db.foodRecord.where('date').equals(date).modify((item, ref) => {
         item.foodTaken.splice(index, 1)
     })
 
@@ -45,7 +45,7 @@ let totalFoodTaken = ref(0)
 
 <template>
 
-    <h1>Daily Record</h1>
+    <h3>Daily Record</h3>
     <span class="actionbar text-small">
         <span class="actionbar-info"><strong>Total Calories</strong>{{totalCalories}} cal</span>
         <span class="actionbar-info"><strong>Items</strong> {{totalFoodTaken}} </span>
@@ -53,7 +53,7 @@ let totalFoodTaken = ref(0)
             <i class="icon-plus"></i><strong>ADD MORE</strong> 
         </router-link>
     </span>
-    <table class="">
+    <table v-if="totalFoodTaken" class="">
         <thead>
             <tr>
                 <th width="30%">
@@ -84,10 +84,19 @@ let totalFoodTaken = ref(0)
             </tr>
         </tbody>
     </table>
+    <div v-else class="panel panel-vertical">
+        <span class="text text-big text-bold">No Record</span>
+        <p>It seems that there is no record found.</p>
+    </div>
 </template>
 
 <style scoped>
 .icon-bin {
     margin: auto;
+}
+
+p{
+    text-indent: 5ch;
+    max-width: 45ch;
 }
 </style>

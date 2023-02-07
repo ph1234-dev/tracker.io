@@ -3,7 +3,8 @@
     <div id="calendar-panel" class="panel panel-vertical panel-paddingless">
         <span class="panel">
             <span @click.stop="getPrevMonth" class="icon-circle-left"></span>
-            <span class="text text-big text-bold">{{ currentMonth }} , {{ currentYear }}</span>
+            <h3>{{ currentMonth }} , {{ currentYear }}</h3>
+            <!-- <span class="text text-big text-bold"></span> -->
             <span @click.stop="getNextMonth" class="icon-circle-right"></span>
         </span>
         <p>Hover and select the date to start logging your record</p>
@@ -22,7 +23,7 @@
                     :data-month="currentMonthIndex + 1"
                     :data-date="date"
                     :data-year="currentYear"
-                    class="calendar-day" 
+                    class="calendar-day effect-hover" 
                     :to="{ name: 'daily_summary'}"
                     @click.stop ="peekDateRecord(date)"
                     >
@@ -317,9 +318,37 @@ let showTotalCalories = async () =>{
 onMounted(() => {  showTotalCalories() })
 
 
+
+let mouseHoverEvent = async (el) =>{
+    
+    let animation = new Promise((resolve,reject)=>{
+        // el.style.
+    })
+
+    await animation
+}
 </script>
 
 <style lang="scss" scoped>
+@use '@/assets/scss/variable';
+
+
+
+
+.effect-hover:not(.current-day):hover{
+    animation-name:  animation-hover-color-chnage;
+    animation-duration: .6s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animation-hover-color-chnage{
+    // from{background-color: currentColor;}
+    to {
+        background-color: variable.$bg-accent
+        // @include variable.paint-accent
+    }
+}
+
 
 .icon-circle-right,
 .icon-circle-left{

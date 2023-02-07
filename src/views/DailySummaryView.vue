@@ -53,7 +53,7 @@ let monthList = ['Jan','Feb','Mar','May','Jun','Jul','Aug','Sep','Oct','Nov','De
 <template>
     <div class="panel panel-vertical">
         <div class="block block-gapless">
-            <span class="text text-big text-bold">{{ stringDate }} Summary</span>
+            <h2>{{ stringDate }}</h2>
             <p class="text">Here is how much you consumed</p>
         </div>
         <div class="block block-gapless">
