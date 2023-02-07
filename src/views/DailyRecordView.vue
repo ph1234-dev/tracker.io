@@ -1,7 +1,7 @@
 <script setup>
 
 import { db } from '@/stores/db.js'
-import { ref, onMounted, nextTick, getCurrentInstance } from 'vue'
+import { reactive,ref, onMounted, nextTick, getCurrentInstance ,watch} from 'vue'
 import { useSession } from '@/stores/session';
 
 let session = useSession()
@@ -29,7 +29,10 @@ onMounted(async () => {
 
 let removeItem = async (index) => {
 
+    totalCalories.value -= data.value[index].calories
+    totalFoodTaken.value -= 1
     data.value.splice(index,1)
+
 
     let date = session.getRecordOfSelectedDate()
 
@@ -37,10 +40,19 @@ let removeItem = async (index) => {
         item.foodTaken.splice(index, 1)
     })
 
+
+
 }
 
 let totalCalories = ref(0)
 let totalFoodTaken = ref(0)
+
+// watch(data.value,function(){
+//     foodTaken.forEach(item => {
+//             totalCalories.value = totalCalories.value + item.calories
+//         });
+// })
+
 </script>
 
 <template>
@@ -96,7 +108,6 @@ let totalFoodTaken = ref(0)
 }
 
 p{
-    text-indent: 5ch;
     max-width: 45ch;
 }
 </style>
