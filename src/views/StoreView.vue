@@ -54,6 +54,9 @@ let saveToIndexDB = async () => {
         await db.foodRecord.bulkAdd([{date: currentDateKey,foodTaken: payload}])
             .then(result => { console.log(`Added new record`)})
             .catch(err => { })
+        router.push({
+            name: 'daily_actual_record'
+        })
 
     } else {
         // adding to nested object in dexie
@@ -62,7 +65,7 @@ let saveToIndexDB = async () => {
             rec.foodTaken.push(...payload)
         }).then(success => {
             router.push({
-                name: 'daily_summary'
+                name: 'daily_actual_record'
             })
         }).catch(err => { console.error(err) })
     }
