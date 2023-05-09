@@ -12,6 +12,10 @@ function login() {
         <span class="nav-content">
             <router-link :to= "{name: 'tracker'}">Tracker.io</router-link>
             <a class="nav-link-push-left">Services</a>
+            <router-link 
+              :to= "{name: 'backup'}">
+              Backup
+            </router-link>
         </span>
 
     </nav>

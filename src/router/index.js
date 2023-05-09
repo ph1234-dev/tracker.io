@@ -8,6 +8,7 @@ import NotFound from "@/views/NotFound.vue"
 import AboutView from "@/views/AboutView.vue"
 import PrivacyView from "@/views/PrivacyView.vue"
 import AuthorView from "@/views/AuthorView.vue"
+import BackupView from "@/views/BackupView.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,6 +52,11 @@ const router = createRouter({
       path: '/author',
       name: 'author',
       component: AuthorView
+    },
+    {
+      path: '/backup',
+      name: 'backup',
+      component: BackupView
     },
     {
       path: "/:catchAll(.*)",
